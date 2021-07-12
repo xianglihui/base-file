@@ -31,8 +31,8 @@
           imports: {
             nav: protocol + "//localhost:8080/js/app.js",
             "single-spa": "/static/single-spa.min.js",
-            vue: "/static/vue.js",
-            "vue-router": "/static/vue-router.min.js",
+            vue: "/static/vue.global.js",
+            // "vue-router": "/static/vue-router.min.js",
             vuex: "/static/vuex.min.js",
             "element-ui": "/static/index.js",
           },
@@ -51,7 +51,7 @@
     />
     <link
       rel="preload"
-      href="/static/vue.js"
+      href="/static/vue.global.js"
       as="script"
       crossorigin="anonymous"
     />
@@ -75,17 +75,17 @@
         Promise.all([
           System.import("single-spa"),
           System.import("vue"),
-          System.import("vue-router"),
+          // System.import("vue-router"),
           //   System.import("vuex"),
           //   System.import("element-ui"),
         ]).then(function (modules) {
           var singleSpa = modules[0];
           var Vue = modules[1];
-          var VueRouter = modules[2];
+          // var VueRouter = modules[2];
           //   var Vuex = modules[3];
           //   var ElementUI = modules[4];
 
-          Vue.use(VueRouter);
+          // Vue.use(VueRouter);
           //   Vue.use(Vuex);
           //   Vue.use(ElementUI);
           singleSpa.registerApplication(
