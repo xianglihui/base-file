@@ -26,10 +26,11 @@
 
       function sheme() {
         var protocol = location.protocol;
-        console.log('protocol',protocol)
+        console.log("protocol", protocol);
         var source = {
           imports: {
-            nav: protocol + "//localhost:8080/js/app.js",
+            nav: protocol + "//localhost:8081/js/app.js",
+            app1: protocol + "//localhost:8082/js/app.js",
             "single-spa": "/static/single-spa.min.js",
             vue: "/static/vue.global.js",
             // "vue-router": "/static/vue-router.min.js",
@@ -93,6 +94,11 @@
             () => System.import("nav"),
             (location) => true
           );
+          singleSpa.registerApplication(
+            "app1",
+            () => System.import("app1"),
+            (location) => true
+          );
           singleSpa.start();
         });
       })();
@@ -102,6 +108,6 @@
       show-when-local-storage="overrides-ui"
     ></import-map-overrides-full>
     <!-- 导航容器 -->
-    <div id="nav"></div>
+    <div id="root_nav"></div>
   </body>
 </html>
