@@ -29,10 +29,10 @@
         console.log("protocol", protocol);
         var source = {
           imports: {
-            nav: protocol + "//localhost:8081/js/app.js",
-            app1: protocol + "//localhost:8082/js/app.js",
+            nav: protocol + "//localhost:8080/js/app.js",
+            app1: protocol + "//localhost:8081/js/app.js",
             "single-spa": "/static/single-spa.min.js",
-            vue: "/static/vue.global.js",
+            vue: "/static/vue3.min.js",
             "vue-router": "/static/vue-router.global.js",
             vuex: "/static/vuex.min.js",
             "element-ui": "/static/index.js",
@@ -52,7 +52,7 @@
     />
     <link
       rel="preload"
-      href="/static/vue.global.js"
+      href="/static/vue3.min.js"
       as="script"
       crossorigin="anonymous"
     />
@@ -81,8 +81,9 @@
           //   System.import("element-ui"),
         ]).then(function (modules) {
           var singleSpa = modules[0];
-          var Vue = modules[1];
-          // var VueRouter = modules[2];
+          var app = Vue.createApp({})
+          var VueRouter = modules[2];
+          app.use(VueRouter)
           //   var Vuex = modules[3];
           //   var ElementUI = modules[4];
 
