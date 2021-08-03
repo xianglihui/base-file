@@ -30,7 +30,7 @@
         var source = {
           imports: {
             nav: protocol + "//localhost:8081/js/app.js",
-            // app1: protocol + "//localhost:8081/js/app.js",
+            app1: protocol + "//localhost:8080/js/app.js",
             "single-spa": "/static/single-spa.min.js",
             vue: "/static/vue3.min.js",
             "vue-router": "/static/vue-router.global.js",
@@ -97,11 +97,11 @@
             () => System.import("nav"),
             (location) => true
           );
-          // singleSpa.registerApplication(
-          //   "app1",
-          //   () => System.import("app1"),
-          //   (location) => true
-          // );
+          singleSpa.registerApplication(
+            "app1",
+            () => System.import("app1"),
+            (location) => true
+          );
           singleSpa.start();
         });
       })();
